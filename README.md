@@ -33,9 +33,9 @@ Turning to **DFSearch**, when compared to the **original** graph and the **BFS**
 
 List of leaf nodes: [`'H3', 'T', 'P1', 'DE', 'CR', 'CM', 'RD'`]
 
-Shortest path from H3 to T: [`'H3', 'A1', 'A', 'LT', 'P', 'C', 'M', 'T'`]
-Shortest path from T to P1: [`'T', 'M', 'C', 'P', 'P1'`]
-Shortest path from P1 to DE: [`'P1', 'P', 'LT', 'S', 'S2', 'S3', 'DE'`]
-Shortest path from DE to CR: [`'DE', 'S3', 'S2', 'R1', 'CR'`]
-Shortest path from CR to CM: [`'CR', 'R1', 'S2', 'S', 'LT', 'A', 'H2', 'H1', 'CM'`]
-Shortest path from CM to RD: [`'CM', 'H1', 'CM2', 'RD'`]
+- Shortest path from H3 to T: [`'H3', 'A1', 'A', 'LT', 'P', 'C', 'M', 'T'`]
+- Shortest path from T to P1: [`'T', 'M', 'C', 'P', 'P1'`]
+- Shortest path from P1 to DE: [`'P1', 'P', 'LT', 'S', 'S2', 'S3', 'DE'`]
+- Shortest path from DE to CR: [`'DE', 'S3', 'S2', 'R1', 'CR'`]
+- Shortest path from CR to CM: [`'CR', 'R1', 'S2', 'S', 'LT', 'A', 'H2', 'H1', 'CM'`]
+- Shortest path from CM to RD: [`'CM', 'H1', 'CM2', 'RD'`]
