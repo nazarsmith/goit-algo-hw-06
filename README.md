@@ -2,39 +2,40 @@
 
 ## Results:
 
-### The time it took to find a substring in text_1:
+### Task 1
 
-- 0.13819772500028193 using Knuth–Morris–Pratt algorithm;
-- 0.054753614000219386 using Boyer-Moore algorithm;
-- 0.3493955379999534 using Rabin-Karp algorithm.
+Let's build a graph using the `networx` library:
 
-### The time it took to find a substring in text_2:
+![alt text](image-3.png)
 
-- 0.2994899980003538 using Knuth–Morris–Pratt algorithm;
-- 0.07389004700053192 using Boyer-Moore algorithm;
-- 0.8342707350002456 using Rabin-Karp algorithm.
-
-### The time it took to go through text_1 and fail to find the substring:
-
-- 0.15844208899943624 using Knuth–Morris–Pratt algorithm;
-- 0.133398316000239 using Boyer-Moore algorithm;
-- 0.42416797500118264 using Rabin-Karp algorithm.
-
-### The time it took to go through text_2 and fail to find the substring:
-
-- 0.3830310350003856 using Knuth–Morris–Pratt algorithm;
-- 0.3531646200008254 using Boyer-Moore algorithm;
-- 0.9278514220004581 using Rabin-Karp algorithm.
-
-### Visualize the results:
+The graph is undirected (to allow for the use of **DFS** and **Dijkstra** algorithms in tasks 2 and 3); the details of the graph can be found below:
 
 ![alt text](image.png)
+
+As well as details on per-node basis:
 
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 
-## Results:
+### Task 2:
 
-As can be seen from the experiments and the graph representation of those, the Boyer-Moore algorithm seems to be the fastest of all three for 3 out of 4 experiment types, and is on par with the 4th type (failure to find a substring in Text 2). At the same time, the Rabin-Karp method is decidedly the slowest.
+When analyzing the results of the **BFS** and the **DFS** algorithms applied to the original graph (`LT` set as the source node), the differences are quite striking.
 
-Looking at the performance text-wise, the evidence suggests that the KMP and the Rabin-Karp algorithms are far better optimized for Text 1. Text 2, in its turn, presents a challenge for all three algorithms, especially when an algorithm fails to find the substring.
+As for **BFSearch**, when compared to the original graph, it can be seen that it checks the innermost (1st degree neighbors) nodes first (`A`, `P`, and `S`), then the innermost nodes of those (2nd degree neighbors), and so on. The resulting tree allows to find the shortest path to a certain node 
+
+![alt text](image-4.png)
+
+Turning to **DFSearch**, when compared to the **original** graph and the **BFS** tree above, it can be seen that it aims to reach the _leaf_ nodes in the first place (e.g. `A` -> `H2` -> `H1` -> `CM`, after which it goes back to `H1` and proceeds to `CM2`, and then its leaf node - `C1`). Using this method, we can make sure all the leaf nodes can be visited (graph coverage completeness), detect loops, or check the shortest path to leaf nodes.
+
+![alt text](image-5.png)
+
+### Task 3
+
+List of leaf nodes: [`'H3', 'T', 'P1', 'DE', 'CR', 'CM', 'RD'`]
+
+Shortest path from H3 to T: [`'H3', 'A1', 'A', 'LT', 'P', 'C', 'M', 'T'`]
+Shortest path from T to P1: [`'T', 'M', 'C', 'P', 'P1'`]
+Shortest path from P1 to DE: [`'P1', 'P', 'LT', 'S', 'S2', 'S3', 'DE'`]
+Shortest path from DE to CR: [`'DE', 'S3', 'S2', 'R1', 'CR'`]
+Shortest path from CR to CM: [`'CR', 'R1', 'S2', 'S', 'LT', 'A', 'H2', 'H1', 'CM'`]
+Shortest path from CM to RD: [`'CM', 'H1', 'CM2', 'RD'`]
